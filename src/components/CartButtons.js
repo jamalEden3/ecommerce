@@ -13,7 +13,7 @@ const Cartbuttons = () => {
                     <span>12</span>
                 </span>
             </Link>
-            <button type="button" class="login-btn">
+            <button type="button" className="login-btn">
                 login
                 <HiUserAdd className="login-icon" />
             </button>
@@ -22,7 +22,7 @@ const Cartbuttons = () => {
 };
 
 const Wrapper = styled.div`
-    border: 1px solid #254;
+    border: 1px solid #254;k
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
