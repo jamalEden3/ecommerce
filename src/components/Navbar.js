@@ -38,7 +38,6 @@ const Navbar = () => {
 
 const NavContainer = styled.nav`
     height: 5rem;
-    border: 1px solid lightgreen;
     dsiplay: flex;
     justify-content: center;
     align-items: center;

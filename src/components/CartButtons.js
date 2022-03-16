@@ -22,11 +22,10 @@ const Cartbuttons = () => {
 };
 
 const Wrapper = styled.div`
-    border: 1px solid #254;k
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    max-width: 200px
+    max-width: 200px;
 
     .cart-btn {
         color: #888;
@@ -63,7 +62,9 @@ const Wrapper = styled.div`
     }
 
     .login-btn {
-        color: red
+        color: red;
+        font-size: var(--fs-400);
+        font-weight: 600;
     }
 
 `
