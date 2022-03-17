@@ -35,7 +35,7 @@ html:focus-within {
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* A elements that don't have a class get default styles */
@@ -47,7 +47,7 @@ a:focus {
 /* Make images easier to work with */
 img,
 picture {
-  max-width: 100%;
+  width: 100%;
   display: block;
 }
 
