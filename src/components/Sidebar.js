@@ -5,15 +5,18 @@ import { Link } from 'react-router-dom';
 /* components */
 import Cartbuttons from './CartButtons';
 
+import { useProductsContext } from '../context/ProductsContext';
+
 
 const Sidebar = () => {
-    const isOpen = true
+    const data = useProductsContext();
+    const { isSidebarOpen, closeSidebar } = data;
     return (
         <SidebarContainer>
-            <aside className={`${isOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
+            <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
                  <div className="aside-header">
                      <img src="https://img.icons8.com/ios/50/000000/discord.png" className="logo" />
-                     <button type="button" className="close-btn">
+                     <button type="button" className="btn close-btn" onClick={closeSidebar}>
                          <AiOutlineCloseCircle />
                      </button>
                  </div>
@@ -22,14 +25,16 @@ const Sidebar = () => {
                         links.map(({id, url, name}) => {
                             return (
                                 <li key={id}>
-                                    <Link to={url} className="side-link">{name}</Link>
+                                    <Link to={url} className="side-link" onClick={closeSidebar}>
+                                        {name}
+                                    </Link>
                                 </li>
                             )
                         })
                     }
                  </ul>
                  <Cartbuttons />
-                 <Link to='/checkout' className="checkout-btn">Check Out</Link>
+                 <Link to='/checkout' className="checkout-btn" onClick={closeSidebar}>Check Out</Link>
             </aside>
         </SidebarContainer>
     );
@@ -45,6 +50,7 @@ const SidebarContainer = styled.div`
         background-color: #999999;
         transform: translate(-100%);
         z-index: -1;
+        transition: all .3s;
     }
 
     .show-sidebar {

@@ -3,17 +3,19 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { HiUserAdd } from "react-icons/hi";
 
 import styled from 'styled-components';
+import { useProductsContext } from '../context/ProductsContext';
 
 const Cartbuttons = () => {
+    const { closeSidebar } = useProductsContext();
     return (
         <Wrapper className="cart-btns">
-            <Link to='/' className="cart-btn">
+            <Link to='/' className="cart-btn" onClick={closeSidebar}>
                 <span className="cart-box">
                     <MdOutlineAddShoppingCart />
                     <span>12</span>
                 </span>
             </Link>
-            <button type="button" className="login-btn">
+            <button type="button" className="login-btn" onClick={closeSidebar}>
                 login
                 <HiUserAdd className="login-icon" />
             </button>

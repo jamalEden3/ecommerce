@@ -6,7 +6,10 @@ import styled from 'styled-components';
 /* components */
 import CartButons from './CartButtons';
 
+import { useProductsContext } from '../context/ProductsContext';
+
 const Navbar = () => {
+    const { openSidebar } = useProductsContext();
     return (
         <NavContainer>
             <div className="nav-center">
@@ -14,7 +17,7 @@ const Navbar = () => {
                     <Link to="/">
                         <img src="https://img.icons8.com/ios/50/000000/discord.png"/>
                     </Link>
-                    <button type="button" className="nav-toggle">
+                    <button type="button" className="nav-toggle btn" onClick={openSidebar}>
                         <FaBars />
                     </button>
                 </div>
