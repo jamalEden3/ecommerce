@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { AiOutlineCloseCircle }  from "react-icons/ai";
 import { links } from '../utils/constants';
@@ -11,13 +12,24 @@ import { useProductsContext } from '../context/ProductsContext';
 const Sidebar = () => {
     const data = useProductsContext();
     const { isSidebarOpen, closeSidebar } = data;
+
+    //hide all body content when sidebar is open
+    useEffect(() => {
+        if (isSidebarOpen) {
+          document.body.style.overflow = 'hidden';
+        }
+        return () => {
+          document.body.style.overflow = '';
+        };
+      }, [isSidebarOpen]);
+      
     return (
         <SidebarContainer>
-            <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
+            <aside className={`${isSidebarOpen ? 'sidebar pfixed show-sidebar' : 'sidebar pfixed'}`}>
                  <div className="aside-header">
                      <img src="https://img.icons8.com/ios/50/000000/discord.png" className="logo" />
                      <button type="button" className="btn close-btn" onClick={closeSidebar}>
-                         <AiOutlineCloseCircle />
+                         <AiOutlineCloseCircle className="fs-700" onClick={closeSidebar} />
                      </button>
                  </div>
                  <ul className="side-list">
@@ -25,7 +37,7 @@ const Sidebar = () => {
                         links.map(({id, url, name}) => {
                             return (
                                 <li key={id}>
-                                    <Link to={url} className="side-link" onClick={closeSidebar}>
+                                    <Link to={url} className="side-link fs-700" onClick={closeSidebar}>
                                         {name}
                                     </Link>
                                 </li>
@@ -42,12 +54,10 @@ const Sidebar = () => {
 
 const SidebarContainer = styled.div`
     .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100vh;
-        background-color: #999999;
+        /* background-color: hsla(var(--faded-dark) / 0.8); */
+        background-color: red;
         transform: translate(-100%);
         z-index: -1;
         transition: all .3s;
@@ -62,9 +72,9 @@ const SidebarContainer = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border: 2px solid red;
         background-color: #fff;
         padding-inline: 2rem;
+        height: 5rem;
     }
 
     .side-list {
@@ -80,7 +90,7 @@ const SidebarContainer = styled.div`
     }
 
     .side-link {
-        color: red;
+        color: var(--primary-green);
     }
 
     .logo {
@@ -89,9 +99,8 @@ const SidebarContainer = styled.div`
 
     .close-btn {
         font-size: var(--fs-400);
-        color: red;
+        color: var(--primary-green);
         transition: all .5s;
-        font-size: var(--fs-600);
     }
     
     .checkout-btn {

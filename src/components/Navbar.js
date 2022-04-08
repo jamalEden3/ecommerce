@@ -1,6 +1,9 @@
+import { useState, useEffect } from 'react';
 import { links } from '../utils/constants';
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
+import { AiOutlineCloseSquare } from "react-icons/ai";
+
 import styled from 'styled-components';
 
 /* components */
@@ -9,16 +12,42 @@ import CartButons from './CartButtons';
 import { useProductsContext } from '../context/ProductsContext';
 
 const Navbar = () => {
-    const { openSidebar } = useProductsContext();
+
+    const { openSidebar, isSidebarOpen } = useProductsContext();
+    const [isScrolled, setIsScrolled] = useState(true);
+    const [offset, setOffset] = useState(0)
+
+    const handleScroll = () => setOffset(window.pageYOffset);
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+        };
+    }, []);
+
+    useEffect(() => {
+       if(offset > 100) {
+           setIsScrolled(false)
+       } else {
+           setIsScrolled(true)
+       }
+    }, [offset]);
+
+    useEffect(() => {
+        console.log(isScrolled);
+        console.log(offset)
+     }, [])
+
     return (
-        <NavContainer>
+        <NavContainer className={isScrolled ? "" : "navnov"}>
             <div className="nav-center">
                 <div className="nav-header">
                     <Link to="/">
                         <img src="https://img.icons8.com/ios/50/000000/discord.png"/>
                     </Link>
                     <button type="button" className="nav-toggle btn" onClick={openSidebar}>
-                        <FaBars />
+                        <FaBars /> 
                     </button>
                 </div>
                 <ul className="nav-list">
@@ -41,10 +70,21 @@ const Navbar = () => {
 
 const NavContainer = styled.nav`
     height: 5rem;
+    width: 100%;
     dsiplay: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    top: 0;
+    padding-top: var(--p-1);
+    background-color: var(--primary-white);
+    transition: .5s all;
+    z-index: 10;
 
+    /* &.navnov {
+        background-color: #000;
+    } */
+    
     .nav-center {
         width: 90vw;
         margin-inline: auto;
@@ -58,7 +98,7 @@ const NavContainer = styled.nav`
     }
 
     .nav-toggle {
-        color: red;
+        color: var(--primary-green);
         svg {
             font-size: 2rem;
         }

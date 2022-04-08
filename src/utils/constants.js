@@ -1,3 +1,4 @@
+import { AiFillAlert } from "react-icons/ai";
 
 export const links = [
     {
@@ -14,5 +15,33 @@ export const links = [
         id: 3,
         name: 'products',
         url: '/products'
+    },
+];
+
+
+export const services = [
+    {
+        id: 1,
+        icon: <AiFillAlert />,
+        name: 'Mission',
+        desc: 'lorem inspum lorem inspum lorem inspum lorem inspum lorem inspum lorem inspuminspum lorem inspu'
+    },
+    {
+        id: 2,
+        icon: <AiFillAlert />,
+        name: 'Mission',
+        desc: 'lorem inspum lorem inspum lorem inspum lorem inspum lorem inspum lorem inspuminspum lorem inspu'
+    },
+    {
+        id: 3,
+        icon: <AiFillAlert />,
+        name: 'Mission',
+        desc: 'lorem inspum lorem inspum lorem inspum lorem inspum lorem inspum lorem inspuminspum lorem inspu'
+    },
+    {
+        id: 4,
+        icon: <AiFillAlert />,
+        name: 'Mission',
+        desc: 'lorem inspum lorem inspum lorem inspum lorem inspum lorem inspum lorem inspuminspum lorem inspu'
     },
 ]

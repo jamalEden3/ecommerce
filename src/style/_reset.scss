@@ -36,18 +36,22 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.6;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
 }
 
 /* A elements that don't have a class get default styles */
 a,
 a:focus {
   text-decoration: none;
+  color: #000
 }
 
 /* Make images easier to work with */
 img,
 picture {
-  width: 100%;
+  max-width: 100%;
   display: block;
 }
 
@@ -74,3 +78,5 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+

@@ -30,6 +30,9 @@ const AboutContainer = styled.section`
         height: 400px;
         object-fit: cover;
     }
+    @media (min-width: 992px) {
+        grid-template-columns: 1fr 1fr;
+    }
 `
 
 export default AboutPage;
