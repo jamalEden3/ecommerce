@@ -9,8 +9,8 @@ const Contacts = () => {
                     <p>do not apply, as on the main axis items are treated as a 
                         group. Therefore, the second value will be ignored.
                     </p>
-                    <form>
-                        <input type="email" placeholder="Drop your email here" />
+                    <form action="https://formspree.io/f/mayvpwrp"method="POST">
+                        <input type="email" name="email" placeholder="Drop your email here" />
                         <button type="submit" className="btn sumbit-btn">Subscribe</button>
                     </form>
                 </div>
