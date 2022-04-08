@@ -1,2 +1,6 @@
 export const OPEN_SIDEBAR = 'OPEN_SIDEBAR';
 export const CLOSE_SIDEBAR = 'CLOSE_SIDEBAR';
+export const START_GET_DATA = 'START_GET_DATA';
+export const GET_DATA_SCCUSS = 'GET_DATA_SCCUSS';
+export const GET_DATA_ERROR = 'GET_DATA_ERROR';
+

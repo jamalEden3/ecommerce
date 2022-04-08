@@ -44,4 +44,9 @@ export const services = [
         name: 'Mission',
         desc: 'lorem inspum lorem inspum lorem inspum lorem inspum lorem inspum lorem inspuminspum lorem inspu'
     },
-]
+];
+
+
+export const products_url = 'https://course-api.com/react-store-products'
+
+export const single_product_url = `https://course-api.com/react-store-single-product?id=`
