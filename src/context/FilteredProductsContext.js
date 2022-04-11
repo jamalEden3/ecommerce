@@ -7,37 +7,37 @@ import { React,
 } from 'react';
 
 import FilteredProductsReducer from '../reducer/FilteredProductsReducer';
+import { useProductsContext } from './ProductsContext';
 
-import { OPEN_SIDEBAR,
-     CLOSE_SIDEBAR,
-     START_GET_DATA,
-     GET_DATA_SCCUSS,
-     GET_DATA_ERROR,
-     START_GET_SELECTED_PRODUCT,
-     GET_SELECTED_PRODUCT_SUCCESS,
-     GET_SELECTED_PRODUCT_ERROR
+import {
+    LOAD_ALL_PRODUCTS 
     } from '../action';
 
 const INITIAL_STATE = {
-    products: [],
-    filteredProducts: []
+    allProducts: [],
+    filteredProducts: [],
+    gridGallery: false
 }
 
 /* create the context */
 const FilteredProductsContext = createContext();
 
 export const FilteredProductsProvider = ({ children }) => {
+    const { products } = useProductsContext();
     const [state, dispatch] = useReducer(FilteredProductsReducer, INITIAL_STATE);
 
-
+    useEffect(() => {
+        dispatch({ type: LOAD_ALL_PRODUCTS, payload: products })
+    },[products]);
+    
     return (
-        <FilteredProductsContext.Provider value={state}>
+        <FilteredProductsContext.Provider value={{...state}}>
             { children }
         </FilteredProductsContext.Provider>
         )
 }
 
 /* use the context */
-export const useProductsContext = () => {
+export const useFilteredProductsContext = () => {
     return useContext(FilteredProductsContext);
 }

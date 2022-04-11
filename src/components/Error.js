@@ -8,9 +8,9 @@ const Error = () => {
     );
 };
 
-export default Error;
 
 const ErrorContainer = styled.section`
-    color: red;
-    font-size: 5rem
+color: red;
+font-size: 5rem
 `
+export default Error;

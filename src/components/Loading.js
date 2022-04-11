@@ -8,9 +8,9 @@ const Loading = () => {
     );
 };
 
-export default Loading;
 
 const LoadingContainer = styled.section`
-    color: red;
-    font-size: 5rem
+color: red;
+font-size: 5rem
 `
+export default Loading;

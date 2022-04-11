@@ -56,7 +56,6 @@ const AddToCart = ({ product }) => {
     );
 };
 
-export default AddToCart;
 
 const AddToCartWrapper = styled.div`
     .color-btn {
@@ -67,4 +66,5 @@ const AddToCartWrapper = styled.div`
     .active {
         opacity: 1
     }
-`
+    `
+export default AddToCart;

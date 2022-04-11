@@ -16,5 +16,10 @@ const Product = ({ image, name, price, id }) => {
 
 const ProductWrapper = styled.div`
     color: green;
+
+    img {
+        width: 100px;
+        height: 100px
+    }
 `
 export default Product;

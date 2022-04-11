@@ -16,8 +16,8 @@ const CountController = ({count, increase, decrease}) => {
     );
 };
 
-export default CountController;
 
 const CountControllerWrapper = styled.div`
 
 `
+export default CountController;

@@ -24,8 +24,8 @@ const FeaturedProducts = () => {
     );
 };
 
-export default FeaturedProducts;
 
 const FeaturedProductsWrapper = styled.section`
-    color: red;
+color: red;
 `
+export default FeaturedProducts;

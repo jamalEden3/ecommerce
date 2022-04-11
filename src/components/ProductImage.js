@@ -22,20 +22,20 @@ const ProductImage = ({ images = [{url:''}] }) => {
     );
 };
 
-export default ProductImage;
 
 const ProductImageWrapper = styled.article`
-    .gallery {
-        width: 100%;
+.gallery {
+    width: 100%;
         border: 2px solid #000;
         display: flex;
 
         img {
             width: 150px;
-
+            
             &.active {
                 border: 2px solid red;
             }
         }
     }
 `
+export default ProductImage;

@@ -56,8 +56,8 @@ const Stars = ({ stars, reviews }) => {
     );
 };
 
-export default Stars;
 
 const StarsWrapper = styled.div`
 
 `
+export default Stars;
