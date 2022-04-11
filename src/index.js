@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 
 import { ProductsProvider } from './context/ProductsContext';
+import { FilteredProductsProvider } from './context/FilteredProductsContext';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <ProductsProvider>
-      <App />
+      <FilteredProductsProvider>
+        <App />
+      </FilteredProductsProvider>
     </ProductsProvider>
   </React.StrictMode>,
   document.getElementById('root')
