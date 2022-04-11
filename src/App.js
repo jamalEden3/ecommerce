@@ -10,7 +10,7 @@ import {
   Home, 
   About,
   Products,
-  SingleProduct,
+  SelectedProduct,
   Cart,
   Checkout,
   Error
@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/products">
             <Products />
           </Route>
-          <Route exact path="/products/:id" children={<SingleProduct />} />
+          <Route exact path="/products/:id" children={<SelectedProduct />} />
           <Route exact path="/cart">
             <Cart />
           </Route>

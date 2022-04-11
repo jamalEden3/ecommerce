@@ -9,10 +9,12 @@ import { React,
 import ProductsReducer from '../reducer/ProductsReducer';
 import { OPEN_SIDEBAR,
          CLOSE_SIDEBAR,
-          START_GET_DATA,
-          GET_DATA_SCCUSS,
-          GET_DATA_ERROR
-        
+         START_GET_DATA,
+         GET_DATA_SCCUSS,
+         GET_DATA_ERROR,
+         START_GET_SELECTED_PRODUCT,
+         GET_SELECTED_PRODUCT_SUCCESS,
+         GET_SELECTED_PRODUCT_ERROR
         } from '../action';
 import { products_url as url } from '../utils/constants';
 import axios from 'axios';
@@ -22,7 +24,11 @@ const INITIAL_STATE = {
     products:[],
     featuredProducts: [],
     productsLoading: true,
-    productsError: false
+    productsError: false,
+    selectedProductLoading: true,
+    selectedProductError: false,
+    selectedProduct: {}
+
 }
 
 /* create the context */
@@ -45,19 +51,32 @@ export const ProductsProvider = ({ children }) => {
             dispatch({ type: START_GET_DATA });
             const response = await axios.get(url);
             const products = response.data;
-            dispatch({ type: GET_DATA_SCCUSS, payload: products })
-            console.log(response);
+            dispatch({ type: GET_DATA_SCCUSS, payload: products });
         } catch (error) {
             dispatch({ type: GET_DATA_ERROR })
         }
     };
 
+    // fetch single data when user click specific product
+    const fetchSelectedProduct = async (url) => {
+        dispatch({ type: START_GET_SELECTED_PRODUCT })
+        try {
+          const response = await axios.get(url)
+          const selectedProduct = await response.data
+          dispatch({ type: GET_SELECTED_PRODUCT_SUCCESS, payload: selectedProduct })
+        } catch (error) {
+          dispatch({ type: GET_SELECTED_PRODUCT_ERROR })
+        }
+      }
+
     useEffect(() => {
         fetchProducts(url);
     },[]);
 
+    
+
     return (
-        <ProductsContext.Provider value={{...state, openSidebar, closeSidebar}}>
+        <ProductsContext.Provider value={{...state, openSidebar, closeSidebar, fetchSelectedProduct}}>
             { children }
         </ProductsContext.Provider>
     )
