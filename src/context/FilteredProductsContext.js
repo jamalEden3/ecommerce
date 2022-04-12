@@ -10,13 +10,17 @@ import FilteredProductsReducer from '../reducer/FilteredProductsReducer';
 import { useProductsContext } from './ProductsContext';
 
 import {
-    LOAD_ALL_PRODUCTS 
+    LOAD_ALL_PRODUCTS,
+    DISPLAY_PRODUCTS_IN_GRID,
+    DISPLAY_PRODUCTS_IN_LIST,
+    UPDATE_LAST_SORT
     } from '../action';
 
 const INITIAL_STATE = {
     allProducts: [],
     filteredProducts: [],
-    gridGallery: false
+    gridGallery: false,
+    sort: 'price-lowest'
 }
 
 /* create the context */
@@ -29,9 +33,21 @@ export const FilteredProductsProvider = ({ children }) => {
     useEffect(() => {
         dispatch({ type: LOAD_ALL_PRODUCTS, payload: products })
     },[products]);
+
+    const displayInGrid = () => {
+        dispatch({ type: DISPLAY_PRODUCTS_IN_GRID });
+    }
+    const displayInList = () => {
+        dispatch({ type: DISPLAY_PRODUCTS_IN_LIST });
+    }
+
+    const getCurrntSort = (e) => {
+        const value = e.target.value;
+        dispatch({ type: UPDATE_LAST_SORT, payload: value })
+    }
     
     return (
-        <FilteredProductsContext.Provider value={{...state}}>
+        <FilteredProductsContext.Provider value={{...state, displayInGrid, displayInList, getCurrntSort}}>
             { children }
         </FilteredProductsContext.Provider>
         )

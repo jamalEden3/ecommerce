@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import BreadCrumbs from '../components/BreadCrumbs';
 import ProductList from '../components/ProductList';
+import Sort from '../components/Sort';
 
 const ProductsPage = () => {
     return (
@@ -13,7 +14,7 @@ const ProductsPage = () => {
                     Filter
                 </div>
                 <div>
-                    Sort
+                    <Sort />
                     <ProductList />
                 </div>
             </ProductsPageWrapper>
