@@ -5,7 +5,7 @@ import GridGallery from './GridGallery';
 import ListGallery from './ListGallery';
 
 const ProductList = () => {
-    const {allProducts: products, gridGallery} = useFilteredProductsContext();
+    const {filteredProducts: products, gridGallery} = useFilteredProductsContext();
     if (products.length < 1) {
         return (
             <h2>Sorry, non of your products found!</h2>
