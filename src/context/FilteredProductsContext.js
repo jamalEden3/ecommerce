@@ -28,12 +28,12 @@ const INITIAL_STATE = {
         text: '',
         company: 'all',
         colors: 'all',
-        categorey: 'assll',
+        category: 'all',
         max_price: 0,
         min_price: 0,
         price: 0,
         shipping: false
-    },
+    }
 }
 
 /* create the context */
@@ -68,8 +68,11 @@ export const FilteredProductsProvider = ({ children }) => {
     }
 
     const updateFilter = (e) => {
-        let name = e.target.name
-        let value = e.target.value
+        let name = e.target.name;
+        let value = e.target.value;
+        if (name === 'category') {
+            value = e.target.textContent;
+        }
         dispatch({ type: UPDATE_FILTER, payload: {name, value} }) 
     }
 
