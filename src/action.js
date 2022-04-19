@@ -14,6 +14,8 @@ export const UPDATE_LAST_SORT = 'UPDATE_LAST_SORT';
 export const SORT_PRODUCTS = 'SORT_PRODUCTS';
 export const UPDATE_FILTER = 'UPDATE_FILTER';
 export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
+export const CLEAR_FILTER = 'CLEAR_FILTER';
+
 
 
 

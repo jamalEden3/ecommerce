@@ -5,7 +5,8 @@ import {
     UPDATE_LAST_SORT,
     SORT_PRODUCTS,
     UPDATE_FILTER,
-    FILTER_PRODUCTS
+    FILTER_PRODUCTS,
+    CLEAR_FILTER
 
 } from '../action';
 
@@ -61,12 +62,63 @@ const FilteredProductsReducer = (state, action) => {
         }
     }
     if(action.type === UPDATE_FILTER) {
-        const {name, value} = action.payload
+        const {name, value} = action.payload;
         return {...state, filters:{...state.filters, [name]: value}}
     }
     if(action.type === FILTER_PRODUCTS) {
+       const { allProducts } = state;
+       const { text, category, company, colors, price, shipping } = state.filters;
+       let tempFiltered = [...allProducts];
+        if(text) {
+            tempFiltered = tempFiltered.filter((product) => {
+                return product.name.toLowerCase().startsWith(text);
+            })
+        }
+        
+        if(category !== 'all') {
+            tempFiltered = tempFiltered.filter((product) => {
+                return product.category === category
+            })
+        }
+
+        if(company !== 'all') {
+            tempFiltered = tempFiltered.filter((product) => {
+                return product.company === company
+            })
+        }
+
+        if(colors !== 'all') {
+            tempFiltered = tempFiltered.filter((product) => {
+                return product.colors.find((clr) => clr === colors)
+            })
+        }
+        
+        tempFiltered = tempFiltered.filter((product) => {
+            return product.price <= price;
+        })
+
+        if (shipping) {
+            tempFiltered.filter((product) => product.shipping === true)
+        }
+        
+
         return {
-            ...state
+            ...state,
+            filteredProducts: tempFiltered
+        }
+    }
+    if(action.type === CLEAR_FILTER) {
+        return {
+            ...state,
+            filters:{
+                ...state.filters,
+                text: '',
+                company: 'all',
+                colors: 'all',
+                category: 'all',
+                price: state.filters.max_price,
+                shipping: false
+            }
         }
     }
     throw new Error(`No matching ${action.type} action type`);

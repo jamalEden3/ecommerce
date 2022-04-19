@@ -16,7 +16,8 @@ import {
     UPDATE_LAST_SORT,
     SORT_PRODUCTS,
     UPDATE_FILTER,
-    FILTER_PRODUCTS
+    FILTER_PRODUCTS,
+    CLEAR_FILTER
     } from '../action';
 
 const INITIAL_STATE = {
@@ -73,11 +74,22 @@ export const FilteredProductsProvider = ({ children }) => {
         if (name === 'category') {
             value = e.target.textContent;
         }
+        if(name === 'colors') {
+            value = e.target.dataset.color
+        }
+        if(name === 'price') {
+            value = Number(value);
+        }
+        if(name === 'shipping') {
+            value = e.target.checked
+        }
+        
         dispatch({ type: UPDATE_FILTER, payload: {name, value} }) 
     }
 
-    const clearFilter = () => {}
-    
+    const clearFilter = () => {
+        dispatch({ type:CLEAR_FILTER })
+    }
     return (
         <FilteredProductsContext.Provider value={{...state, displayInGrid, displayInList, getCurrntSort, updateFilter, clearFilter}}>
             { children }
