@@ -4,6 +4,8 @@ import './index.scss';
 
 import { ProductsProvider } from './context/ProductsContext';
 import { FilteredProductsProvider } from './context/FilteredProductsContext';
+import { CartProvider } from './context/CartContext';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

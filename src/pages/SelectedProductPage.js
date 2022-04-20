@@ -59,7 +59,7 @@ const SelectedProductPage = () => {
                             {stock > 0 ? "available": "not available"}
                         </span>
                     </p>
-                    <p className="selcProduct-info">{sku}</p>
+                    <p className="selcProduct-info">{sku}:</p>
                     <p className="selcProduct-info">Brand: {company}</p>
                 </div>
                 {stock > 0 ? <AddToCart product={selectedProduct}/> : ''}

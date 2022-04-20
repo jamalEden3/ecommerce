@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { BiCheck } from "react-icons/bi";
 import CountControllers from './CountControllers';
+import { useCartContext } from '../context/CartContext';
 
 const AddToCart = ({ product }) => {
+    const { addToCart } = useCartContext();
     const { stock, colors, id } = product;
     const [currentColor, setCurrentColor] = useState(colors[0]);
     const [productCount, setProductCount] = useState(1);
@@ -47,7 +49,7 @@ const AddToCart = ({ product }) => {
 
            <div>
                <CountControllers count={productCount} increase={increaseCount} decrease={decreaseCount} />
-               <Link to="/cart" >
+               <Link to="/cart" onClick={() => addToCart(id, currentColor, productCount, product)}>
                    Go to cart
                </Link>
            </div>
