@@ -13,7 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ProductsProvider>
       <FilteredProductsProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </FilteredProductsProvider>
     </ProductsProvider>
   </React.StrictMode>,
