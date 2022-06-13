@@ -34,10 +34,10 @@ const Navbar = () => {
        }
     }, [offset]);
 
-    useEffect(() => {
+    /* useEffect(() => {
         console.log(isScrolled);
         console.log(offset)
-     }, [])
+     }, []) */
 
     return (
         <NavContainer className={isScrolled ? "" : "navnov"}>

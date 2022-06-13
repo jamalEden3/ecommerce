@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineMinusSquare } from "react-icons/ai";
 
-const CountController = ({count, increase, decrease}) => {
+const CountControllers = ({count, increase, decrease}) => {
     return (
-        <CountControllerWrapper>
+        <CountControllersWrapper>
             <button onClick={increase}>
                 <AiOutlinePlusCircle />
             </button>
@@ -12,12 +12,12 @@ const CountController = ({count, increase, decrease}) => {
             <button onClick={decrease}>
                 <AiOutlineMinusSquare />
             </button>
-        </CountControllerWrapper>
+        </CountControllersWrapper>
     );
 };
 
 
-const CountControllerWrapper = styled.div`
+const CountControllersWrapper = styled.div`
 
 `
-export default CountController;
+export default CountControllers;

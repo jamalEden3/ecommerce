@@ -28,7 +28,6 @@ const INITIAL_STATE = {
     selectedProductLoading: true,
     selectedProductError: false,
     selectedProduct: {}
-
 }
 
 /* create the context */

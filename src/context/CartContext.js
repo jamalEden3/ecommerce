@@ -1,5 +1,4 @@
-import { React, 
-    useState, 
+import { React,
     useEffect, 
     useContext, 
     createContext, 
@@ -9,7 +8,11 @@ import { React,
 import CartReducer from '../reducer/CartReducer';
 
 import {
-    ADD_TO_CART
+    ADD_TO_CART,
+    REMOVE_ITEM,
+    CLEAR_CART,
+    TOGGLE_ITEM_COUNT,
+    GET_TOTAL_ITEMS
     } from '../action';
 
 
@@ -41,21 +44,27 @@ export const CartProvider = ({ children }) => {
 
     // remove item from cartItems
     const removeItem = (id) => {
-
+        dispatch({ type: REMOVE_ITEM, payload: id });
     }
 
     // toggle count
     const toggleItemCount = (id, value) => {
-
+        dispatch({
+            type: TOGGLE_ITEM_COUNT,
+            payload: {
+                id, value
+            }
+        })
     }
 
     //clear cartItems
     const clearCartItems = () => {
-
+        dispatch({ type: CLEAR_CART })
     }
 
     // set items in local storage every time cartItems changes
     useEffect(() => {
+        dispatch({ type: GET_TOTAL_ITEMS })
         localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     }, [state.cartItems]);
 

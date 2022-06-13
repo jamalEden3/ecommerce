@@ -17,6 +17,13 @@ export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
 
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const CLEAR_CART = 'CLEAR_CART';
+export const TOGGLE_ITEM_COUNT = 'TOGGLE_ITEM_COUNT';
+export const GET_TOTAL_ITEMS = 'GET_TOTAL_ITEMS';
+
+
+
 
 
 

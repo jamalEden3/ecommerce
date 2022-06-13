@@ -1,18 +1,21 @@
 import { Link } from 'react-router-dom';
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { HiUserAdd } from "react-icons/hi";
+import { useCartContext } from '../context/CartContext'; 
 
 import styled from 'styled-components';
 import { useProductsContext } from '../context/ProductsContext';
 
 const Cartbuttons = () => {
     const { closeSidebar } = useProductsContext();
+    const { total_items } = useCartContext();
+
     return (
         <Wrapper className="cart-btns">
             <Link to='/' className="cart-btn" onClick={closeSidebar}>
                 <span className="cart-box">
                     <MdOutlineAddShoppingCart />
-                    <span>12</span>
+                    <span>{total_items}</span>
                 </span>
             </Link>
             <button type="button" className="login-btn" onClick={closeSidebar}>
