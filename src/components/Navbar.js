@@ -10,12 +10,14 @@ import styled from 'styled-components';
 import CartButons from './CartButtons';
 
 import { useProductsContext } from '../context/ProductsContext';
+import { useUserContext } from '../context/UserContext';
 
 const Navbar = () => {
 
     const { openSidebar, isSidebarOpen } = useProductsContext();
+    const { myUser } = useUserContext();
     const [isScrolled, setIsScrolled] = useState(true);
-    const [offset, setOffset] = useState(0)
+    const [offset, setOffset] = useState(0);
 
     const handleScroll = () => setOffset(window.pageYOffset);
 
@@ -61,6 +63,10 @@ const Navbar = () => {
                             );
                         })
                     }
+                    {
+                        myUser ? <li><Link to='/checkout'>checkout</Link></li> : ''
+                    }
+                    
                 </ul>
                 <CartButons />
             </div>

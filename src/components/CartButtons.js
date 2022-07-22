@@ -1,14 +1,25 @@
+
 import { Link } from 'react-router-dom';
 import { MdOutlineAddShoppingCart } from "react-icons/md";
+
 import { HiUserAdd } from "react-icons/hi";
-import { useCartContext } from '../context/CartContext'; 
+import { BiLogOut } from "react-icons/bi";
+
+import { useCartContext } from '../context/CartContext';
+import { useUserContext } from '../context/UserContext';
 
 import styled from 'styled-components';
 import { useProductsContext } from '../context/ProductsContext';
+import userEvent from '@testing-library/user-event';
+
+
 
 const Cartbuttons = () => {
     const { closeSidebar } = useProductsContext();
     const { total_items } = useCartContext();
+
+
+    const { myUser, loginWithRedirect, logout} = useUserContext();
 
     return (
         <Wrapper className="cart-btns">
@@ -18,10 +29,21 @@ const Cartbuttons = () => {
                     <span>{total_items}</span>
                 </span>
             </Link>
-            <button type="button" className="login-btn" onClick={closeSidebar}>
-                login
-                <HiUserAdd className="login-icon" />
-            </button>
+            {
+                !myUser ? (
+                    <button type="button" className="login-btn">
+                        login
+                        <HiUserAdd className="login-icon" onClick={loginWithRedirect}/>
+                    </button>
+                ) : (
+                    <button type="button" className="login-btn">
+                        logout
+                        <BiLogOut className="logout-icon" onClick={() => logout({ returnTo: window.location.origin })}/>
+                        <h2>Welcome {myUser.given_name}</h2>
+                    </button>
+                )
+            }
+ 
         </Wrapper>
     );
 };
